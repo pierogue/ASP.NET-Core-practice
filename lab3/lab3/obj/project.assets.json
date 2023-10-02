@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dadaa\\Desktop\\asp\\lab3\\lab3\\lab3.csproj",
+      "projectUniqueName": "C:\\Users\\dadaa\\Desktop\\asp\\ASP.NET-Core-practice\\lab3\\lab3\\lab3.csproj",
       "projectName": "lab3",
-      "projectPath": "C:\\Users\\dadaa\\Desktop\\asp\\lab3\\lab3\\lab3.csproj",
+      "projectPath": "C:\\Users\\dadaa\\Desktop\\asp\\ASP.NET-Core-practice\\lab3\\lab3\\lab3.csproj",
       "packagesPath": "C:\\Users\\dadaa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dadaa\\Desktop\\asp\\lab3\\lab3\\obj\\",
+      "outputPath": "C:\\Users\\dadaa\\Desktop\\asp\\ASP.NET-Core-practice\\lab3\\lab3\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dadaa\\AppData\\Roaming\\NuGet\\NuGet.Config",

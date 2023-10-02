@@ -2,19 +2,10 @@
 @{
     ViewBag.Title = "Удалить запись";
     Layout = "_Layout";
-    string actionString;
-    if (Context.Connection.LocalPort == 5024)
-    {
-        actionString = "http://localhost:5042";
-    }
-    else
-    {
-        actionString = $"https://localhost:{Context.Connection.LocalPort}";
-    }
 }
 
 <h2>@ViewBag.Title</h2>
-<form action="@actionString/Dict/DeleteSave/" method="post">
+<form action="DeleteSave" method="post">
     <label>Имя</label>
     <input type="text" name="name"/>
     <input type="submit" class="btn btn-outline-success"/>

@@ -2,19 +2,10 @@
 @{
     ViewBag.Title = "Обновить запись";
     Layout = "_Layout";
-    string actionString;
-    if (Context.Connection.LocalPort == 5024)
-    {
-        actionString = "http://localhost:5042";
-    }
-    else
-    {
-        actionString = $"https://localhost:{Context.Connection.LocalPort}";
-    }
 }
 
 <h2>@ViewBag.Title</h2>
-<form action="@actionString/Dict/UpdateSave/" method="post">
+<form action="UpdateSave" method="post">
     <label>Имя</label>
     <input type="text" name="name"/>
     <label>Новый номер</label>

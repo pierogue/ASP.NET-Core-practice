@@ -1,0 +1,24 @@
+
+
+@{
+    ViewBag.Title = "Добавление новой записи";
+    Layout = "_Layout";
+    string actionString;
+    if (Context.Connection.LocalPort == 5024)
+    {
+        actionString = "http://localhost:5042";
+    }
+    else
+    {
+        actionString = $"https://localhost:{Context.Connection.LocalPort}";
+    }
+}
+
+<h2>@ViewBag.Title</h2>
+<form action="@actionString/Dict/AddSave/" method="post">
+    <label>Имя</label>
+    <input type="text" name="name"/>
+    <label>Номер телефона</label>
+    <input type="number" name="number"/>
+    <input type="submit" value="Добавить" class="btn btn-outline-success"/>
+</form>

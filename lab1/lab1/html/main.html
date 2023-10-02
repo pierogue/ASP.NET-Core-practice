@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
+<body>
+    <form method="get" action="add">
+        <input type="number" name="x" id="x"/>
+        <input type="number" name="y" id="y"/>
+        <input type="submit" value="sum"/>
+    </form>
+    <form id="mul">
+        <input type="number" name="xm" id="xm"/>
+        <input type="number" name="ym" id="ym"/>
+        <input type="button" value="mul" id="mulBut"/>
+        <p id="answer"></p>
+    </form>
+    <script>
+        async function send() {
+            const response = await fetch(`/add`, {
+                method: "POST",
+                body: {
+                    x : document.getElementById("x").value,
+                    y : document.getElementById("y").value,
+                },
+                headers: { "Accept": "application/json", "Content-Type": "application/json" }
+            });
+            console.log(response.body);
+        }
+        document.getElementById("mulBut").onclick = async (e) =>{
+            e.preventDefault();
+            const formData = new FormData(document.getElementById("mul"));
+            
+            const answer = await fetch("/add", {
+                method:"POST",
+                body:formData
+            }).then((res)=>{
+                return res.text();
+            })
+            
+            document.getElementById("answer").innerText = answer;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+@model DictViewModel
+
+@{
+    ViewData["Title"] = "Dictionary";
+    Layout = "_Layout";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Phone Dictionary</h1>
+    <h2>Count: @Model.PhoneDictionary.Count</h2>
+    <a asp-action="Add" class="btn btn-outline-dark">Добавить новую запись</a>
+    <a asp-action="Update" class="btn btn-outline-dark">Изменить запись</a>
+    <a asp-action="Delete" class="btn btn-outline-dark">Удалить запись</a>
+    <ul class="text-sm-start">
+        @foreach(var person in Model.PhoneDictionary)
+        {
+            <li>@person.Key - @person.Value</li>
+        }
+    </ul>
+</div>

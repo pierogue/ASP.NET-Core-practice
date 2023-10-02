@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "TXGNIREVbs7FpkyWr/8IN5dZ20zhJCdOpodHeTfKLEac6861r6YpnHJGdJXYl3ST6tQwNWmg7cxUoaJxVjtG6Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\dadaa\\Desktop\\asp\\lab1\\lab1\\lab1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dadaa\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

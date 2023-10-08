@@ -1,67 +1,90 @@
 using System.Text;
 using System.Text.Json;
+using lab3.Database;
 
 namespace lab3.Models;
 using System.Text.Json.Serialization;
 
 public class DictViewModel
 {
-    public SortedDictionary<string, string> PhoneDictionary;
+    // public SortedDictionary<int, Record> PhoneDictionary;
+    // public SortedDictionary<string, string>? ReadFromFile()
+    // {
+    //     using (var fs = new FileStream("./Data/Dict.json", FileMode.OpenOrCreate))
+    //     {
+    //         SortedDictionary<string, string>? dict = JsonSerializer.Deserialize<SortedDictionary<string, string>>(fs);
+    //
+    //         if (dict != null)
+    //         {
+    //             return dict;
+    //         }
+    //         else return null;
+    //     }
+    // }
 
-    public SortedDictionary<string, string>? ReadFromFile()
+    // public bool WriteToFile()
+    // {
+    //     File.Delete("./Data/Dict.json");
+    //     using (var fs = new FileStream("./Data/Dict.json", FileMode.OpenOrCreate))
+    //     {
+    //         var json = JsonSerializer.Serialize(PhoneDictionary);
+    //         fs.Write(new ReadOnlySpan<byte>(UnicodeEncoding.UTF8.GetBytes(json)));
+    //         return true;
+    //     }
+    // }
+    public SortedDictionary<int, Record> GetDictionary()
     {
-        using (var fs = new FileStream("./Data/Dict.json", FileMode.OpenOrCreate))
+        using (var db = new ApplicationContext())
         {
-            SortedDictionary<string, string>? dict = JsonSerializer.Deserialize<SortedDictionary<string, string>>(fs);
-
-            if (dict != null)
-            {
-                return dict;
-            }
-            else return null;
+            return new SortedDictionary<int, Record>
+                (db.Records.ToDictionary(k=>k.Id, l=>l));
+        }
+    }
+    public SortedDictionary<int, Record> ReadFromDatabase()
+    {
+        using (ApplicationContext db = new ApplicationContext())
+        {
+            return new SortedDictionary<int, Record>
+                (db.Records.ToDictionary(i => i.Id, r => r));
         }
     }
 
-    public bool WriteToFile()
+    public void WriteToDatabase(Record record)
     {
-        File.Delete("./Data/Dict.json");
-        using (var fs = new FileStream("./Data/Dict.json", FileMode.OpenOrCreate))
+        using (ApplicationContext db = new ApplicationContext())
         {
-            var json = JsonSerializer.Serialize(PhoneDictionary);
-            fs.Write(new ReadOnlySpan<byte>(UnicodeEncoding.UTF8.GetBytes(json)));
-            return true;
+            db.Records.Add(record);
+            db.SaveChanges();
         }
-    }
-    
-    public DictViewModel()
-    {
-        PhoneDictionary = ReadFromFile() ?? new SortedDictionary<string, string>();
     }
 
     public void Add(string name, string number)
     {
-        PhoneDictionary.Add(name, number);
-        WriteToFile();
+        WriteToDatabase(new Record(name, number));
     }
 
-    public bool Remove(string name)
+    public bool Remove(int id)
     {
-        PhoneDictionary.Remove(name);
-        WriteToFile();
-        return true;
-    }
-
-    public bool Update(string name, string number)
-    {
-        if (PhoneDictionary.ContainsKey(name))
+        using (var db = new ApplicationContext())
         {
-            PhoneDictionary[name] = number;
-            WriteToFile();
+            var rec = db.Records.Find(id);
+            if (rec == null) return false;
+            db.Remove(rec);
+            db.SaveChanges();
             return true;
         }
-        else
+    }
+
+    public bool Update(int id, string name, string number)
+    {
+        using (var db = new ApplicationContext())
         {
-            return false;
+            var rec = db.Records.Find(id);
+            if (rec is null) return false;
+            rec.Name = name;
+            rec.Number = number;
+            db.SaveChanges();
+            return true;
         }
     }
     

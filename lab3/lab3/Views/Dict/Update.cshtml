@@ -5,10 +5,13 @@
 }
 
 <h2>@ViewBag.Title</h2>
-<form action="UpdateSave" method="post">
-    <label>Имя</label>
-    <input type="text" name="name"/>
+<form action="/Dict/UpdateSave" method="post" class="d-flex flex-column w-25">
+    <label>Обновить запись с текущим id:</label>
+    <input type="number" name="id" value="@ViewBag.Id"/>
+    <label>Новое Имя</label>
+    <input type="text" name="name" value="@ViewBag.Name"/>
     <label>Новый номер</label>
-    <input type="number" name="number"/>
+    <input type="number" name="number" value="@ViewBag.Number"/>
+    <br/>
     <input type="submit" value="Изменить" class="btn btn-outline-success"/>
 </form>

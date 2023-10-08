@@ -5,20 +5,18 @@ namespace lab3.Controllers;
 
 public class DictController : Controller
 {
+    private DictViewModel model = new DictViewModel();
+    
     [HttpGet]
     public IActionResult Index()
     {
-        return View(new DictViewModel());
+        return View(model);
     }
 
     [HttpPost]
     public IActionResult AddSave(string name, string number)
     {
-        ViewBag.Name = name;
-        ViewBag.Number = number;
-        var model = new DictViewModel();
         model.Add(name, number);
-        
         return View(model);
        
     }
@@ -30,30 +28,41 @@ public class DictController : Controller
     }
 
     [HttpGet]
-    public IActionResult Update()
+    public IActionResult Update(int? id, string name, string number)
     {
+        if (id is null) return View();
+        ViewBag.Id = id;
+        ViewBag.Name = name;
+        ViewBag.Number = number;
         return View();
     }
 
     [HttpPost]
-    public IActionResult UpdateSave(string name, string number)
+    public IActionResult UpdateSave(int? id, string? name, string? number)
     {
-        var dict = new DictViewModel();
-        dict.Update(name, number);
+        if (id is null || name is null || number is null)
+        {
+            ViewBag.resText = "Запись не найдена";
+            return View();
+        }
+        model.Update((int)id, name, number);
+        ViewBag.resText = "Запись успешно обновлена";
         return View();
     }
 
     [HttpGet]
-    public IActionResult Delete()
+    public IActionResult Delete(int? id)
     {
+        if (id is null) return View();
+        ViewData["id"] = id;
         return View();
     }
 
     [HttpPost]
-    public IActionResult DeleteSave(string name)
+    public IActionResult DeleteSave(int id)
     {
-        var dict = new DictViewModel();
-        dict.Remove(name);
+        model.Remove(id);
         return View();
     }
+    
 }

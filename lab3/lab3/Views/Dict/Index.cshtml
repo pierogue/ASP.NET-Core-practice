@@ -7,14 +7,25 @@
 
 <div class="text-center">
     <h1 class="display-4">Phone Dictionary</h1>
-    <h2>Count: @Model.PhoneDictionary.Count</h2>
+    <h2>Count: @Model.GetDictionary().Count</h2>
     <a asp-action="Add" class="btn btn-outline-dark">Добавить новую запись</a>
     <a asp-action="Update" class="btn btn-outline-dark">Изменить запись</a>
     <a asp-action="Delete" class="btn btn-outline-dark">Удалить запись</a>
     <ul class="text-sm-start">
-        @foreach(var person in Model.PhoneDictionary)
+        @foreach(var person in Model.GetDictionary())
         {
-            <li>@person.Key - @person.Value</li>
+            <li>@person.Value.Name - @person.Value.Number 
+                <button>
+                    <a href="/Dict/Delete/@person.Key">
+                        удалить
+                    </a>
+                </button>
+                <button>
+                    <a href="/Dict/Update?id=@person.Key&name=@person.Value.Name&number=@person.Value.Number">
+                        изменить
+                    </a>
+                </button>
+                </li>
         }
     </ul>
 </div>

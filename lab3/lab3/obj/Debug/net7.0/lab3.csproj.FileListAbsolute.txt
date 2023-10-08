@@ -62,3 +62,10 @@ C:\Users\dadaa\Desktop\asp\ASP.NET-Core-practice\lab3\lab3\obj\Debug\net7.0\refi
 C:\Users\dadaa\Desktop\asp\ASP.NET-Core-practice\lab3\lab3\obj\Debug\net7.0\lab3.pdb
 C:\Users\dadaa\Desktop\asp\ASP.NET-Core-practice\lab3\lab3\obj\Debug\net7.0\lab3.genruntimeconfig.cache
 C:\Users\dadaa\Desktop\asp\ASP.NET-Core-practice\lab3\lab3\obj\Debug\net7.0\ref\lab3.dll
+C:\Users\dadaa\Desktop\asp\ASP.NET-Core-practice\lab3\lab3\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\dadaa\Desktop\asp\ASP.NET-Core-practice\lab3\lab3\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\dadaa\Desktop\asp\ASP.NET-Core-practice\lab3\lab3\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\dadaa\Desktop\asp\ASP.NET-Core-practice\lab3\lab3\bin\Debug\net7.0\Npgsql.dll
+C:\Users\dadaa\Desktop\asp\ASP.NET-Core-practice\lab3\lab3\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\dadaa\Desktop\asp\ASP.NET-Core-practice\lab3\lab3\obj\Debug\net7.0\lab3.csproj.AssemblyReference.cache
+C:\Users\dadaa\Desktop\asp\ASP.NET-Core-practice\lab3\lab3\obj\Debug\net7.0\lab3.csproj.CopyComplete

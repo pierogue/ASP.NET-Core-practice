@@ -5,8 +5,9 @@
 }
 
 <h2>@ViewBag.Title</h2>
-<form action="DeleteSave" method="post">
-    <label>Имя</label>
-    <input type="text" name="name"/>
-    <input type="submit" class="btn btn-outline-success"/>
+<form action="/Dict/DeleteSave" method="post" class="d-flex flex-column w-25">
+    <label>Удалить запись с данным ID?</label>
+    <input type="number" name="id" value="@ViewData["id"]"/>
+    <br/>
+    <input type="submit" class="btn btn-outline-success" value="Подтвердить"/>
 </form>
